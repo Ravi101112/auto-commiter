@@ -1,0 +1,6 @@
+echo "Initial dummy text" > dummy.txt
+git add dummy.txt
+git commit -m "Add dummy.txt"
+git push
+
+
