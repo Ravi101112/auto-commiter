@@ -2,7 +2,7 @@ name: Auto Daily Commits
 
 on:
   schedule:
-    - cron: '18 10 * * *'  # ⏰ Runs daily at 10:18 AM UTC (3:48 PM IST)
+    - cron: '30 10 * * *'  # ⏰ Runs daily at 10:30 AM UTC (4:00 PM IST)
   workflow_dispatch:
 
 jobs:
@@ -13,16 +13,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Make 5 dummy commits
+    - name: Configure Git
       run: |
         git config user.name "github-actions"
         git config user.email "github-actions@github.com"
 
+    - name: Make 5 dummy commits
+      run: |
         for i in {1..5}
         do
           echo "Commit $i at $(date)" >> dummy.txt
           git add dummy.txt
-          git commit -m "Auto commit $i at $(date)"
+          git commit -m "Auto commit $i at $(date)" || echo "Skip commit $i (nothing to commit)"
         done
 
-        git push
+    - name: Push changes
+      run: |
+        git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
