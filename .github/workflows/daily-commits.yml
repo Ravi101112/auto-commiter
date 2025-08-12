@@ -2,7 +2,7 @@ name: Auto Daily Commits
 
 on:
   schedule:
-    - cron: '38 21 * * *'  # ⏰ Runs daily at 11:30 AM UTC (5:00 PM IST)
+    - cron: '25 16 * * *'  # ⏰ Runs daily at 11:30 AM UTC (5:00 PM IST)
   workflow_dispatch:
 
 jobs:
