@@ -15,8 +15,8 @@ jobs:
 
     - name: Configure Git
       run: |
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
+        git config user.name "Ravi101112"
+        git config user.email "raviverma101112@gmail.com"
 
     - name: Make random number of dummy commits (5 to 10)
       run: |
